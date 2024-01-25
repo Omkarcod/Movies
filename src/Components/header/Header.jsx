@@ -107,8 +107,14 @@ export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar style={{background:'#3c3636e6'}}>
-          <Typography style={{ fontSize: "20px", fontWeight: "800",marginLeft:"30px" }}>
+        <Toolbar style={{ background: "#3c3636e6" }}>
+          <Typography
+            style={{
+              fontSize: "20px",
+              fontWeight: "800",
+              marginLeft: "30px",
+            }}
+          >
             MoviesDB
           </Typography>
           <Typography
@@ -117,43 +123,44 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           ></Typography>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Typography
-              style={{
-                margin: "0px 30px",
-                color: "darkgray",
-                fontSize: "20px",
-                fontWeight: "600",
-              }}
-            >
-              Popular
-            </Typography>
-          </Link>
-          <Link to="/toprated" style={{ textDecoration: "none" }}>
-            <Typography
-              style={{
-                margin: "0px 30px",
-                color: "darkgray",
-                fontSize: "20px",
-                fontWeight: "600",
-              }}
-            >
-              Top Rated
-            </Typography>
-          </Link>
-          <Link to="/upcoming" style={{ textDecoration: "none" }}>
-            <Typography
-              style={{
-                margin: "0px 30px",
-                color: "darkgray",
-                fontSize: "20px",
-                fontWeight: "600",
-              }}
-            >
-              Upcoming
-            </Typography>
-          </Link>
-
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                style={{
+                  margin: "0px 30px",
+                  color: "darkgray",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Popular
+              </Typography>
+            </Link>
+            <Link to="/toprated" style={{ textDecoration: "none" }}>
+              <Typography
+                style={{
+                  margin: "0px 30px",
+                  color: "darkgray",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Top Rated
+              </Typography>
+            </Link>
+            <Link to="/upcoming" style={{ textDecoration: "none" }}>
+              <Typography
+                style={{
+                  margin: "0px 30px",
+                  color: "darkgray",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Upcoming
+              </Typography>
+            </Link>
+          </Box>
           <Searchdiv>
             <Search>
               <SearchIconWrapper>
@@ -169,17 +176,22 @@ export default function Header() {
             {showSearchResults && searchQuery && (
               <List
                 style={{
-                  
                   position: "absolute",
                   background: "#FFF",
                   marginTop: "35px",
+                  zIndex: 99,
                 }}
               >
                 {movies.map((movie) => (
                   <List key={movie.id}>
                     <Link
                       onClick={handleResultClick}
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        padding: "10px",
+                        display: "block",
+                      }}
                       to={`/movie/${movie.id}`}
                     >
                       {movie.title}
